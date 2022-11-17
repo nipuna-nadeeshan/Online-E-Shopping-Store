@@ -117,6 +117,7 @@
 			Item item = ci.getItem();
 			int qty = ci.getQty();
 			String name = item.getName();
+			float uprice = item.getPrice();
 			float price = item.getPrice()*qty;
 			total += price;
 	
@@ -132,7 +133,7 @@
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3">
                 <p class="lead fw-normal mb-2"><%=name %></p>
-               <!--  <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p> -->
+               <p><span class="text-muted">Unit Price: </span><%=uprice %> </p>
               </div>
               <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
               	<form action="add-or-remove" method="get">
@@ -159,7 +160,9 @@
                 <h5 class="mb-0"><%=price%></h5>
               </div>
               <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-              <form >
+              <form action="remove-item">
+              	<input type="hidden" name="itemId" value="<%=item.getNum() %>">
+              	
                 <button class="text-danger"><i class="fas fa-trash fa-lg"></i></button>
                </form>
               </div>
@@ -180,7 +183,9 @@
 
         <div class="card">
           <div class="card-body">
-            <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+          <form action="payment.jsp">
+            <button type="submit" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+           </form>
           </div>
         </div>
 

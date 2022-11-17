@@ -43,7 +43,10 @@ public class Item {
 				+ "                    		<input type=\"hidden\" value=\""+num+"\" name=\"name\"> \r\n"				
 				+ "                        	<button class=\"btn btn-sm text-dark p-0\"><i class=\"fas fa-eye text-primary mr-1\"></i>View Detail</button>\r\n"
 				+ "                        </form>\r\n"
-				+ "                        <a href=\"\" class=\"btn btn-sm text-dark p-0\"><i class=\"fas fa-shopping-cart text-primary mr-1\"></i>Add To Cart</a>\r\n"
+				
+				
+				+ "                        <button href=\"\" class=\"btn btn-sm text-dark p-0 addButton\" id=\""+num+"\"><i class=\"fas fa-shopping-cart text-primary mr-1\" ></i>Add To Cart</button>\r\n"
+				
 				+ "                    </div>\r\n"
 				+ "                </div>\r\n"
 				+ "            </div>";

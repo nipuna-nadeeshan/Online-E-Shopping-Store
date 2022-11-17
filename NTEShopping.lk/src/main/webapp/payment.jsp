@@ -193,11 +193,13 @@
  	<script>
  	
  	function validate() {
- 		  var x = document.forms["myForm"]["pname"].value;
- 		  if (x == "") {
- 		    alert("Name must be filled out");
- 		    return false;
+ 		var x = document.forms["myForm"]["pname"].value;
+		  if (x == "") {
+		    alert("Name must be filled out");
+		    return false;
+ 		
  		  }
+		  window.location.replace("http://localhost:8080/NTEShopping.lk/thanks.jsp");
  		}
  	
  	</script>

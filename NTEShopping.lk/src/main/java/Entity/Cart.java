@@ -28,6 +28,9 @@ public class Cart {
 	public int getUserId() {
 		return userId;
 	}
+	
+	/* Show the available item in the cart */
+	
 	//int num, float price, int qty ,String name, String type, String photoUrl
 	public void loadCart() {
 		String query = "SELECT * FROM cart c JOIN item i ON i.item_id = c.item_id WHERE c.cid = "+userId+";";
@@ -54,6 +57,9 @@ public class Cart {
 		}
 		
 	}
+	
+	/* increase Item Quantity */
+	
 	public void addItemToCart(int itemId,int currentQty) {
 		for(int i = 0;i<itemList.size();i++) {
 			CartItem cartItem = itemList.get(i);
@@ -77,6 +83,8 @@ public class Cart {
 			}				
 		}
 	}
+	
+	/* Delete item from the cart */
 	public void removeItemFromCart(int itemId) {
 		for(int i = 0; i<itemList.size();i++) {
 			CartItem cartItem = itemList.get(i);
@@ -99,6 +107,8 @@ public class Cart {
 			}
 		}
 	}
+	
+	/* Reduce item quantity */
 	public void reduceItemQty(int itemId,int qty) {
 		for(int i = 0;i<itemList.size();i++) {
 			CartItem cartItem = itemList.get(i);
@@ -127,6 +137,8 @@ public class Cart {
 			}				
 		}
 	}
+	
+	
 	public void addNewItemToCart(int itemId,int qty) {
 		boolean isAlreadyIn = false;
 		for(int i = 0;i<itemList.size();i++) {
@@ -155,6 +167,11 @@ public class Cart {
 			}
 		}
 		
+	}
+	public static int getNumOfItems(int num) {
+		Cart cart = new Cart(num);
+		cart.loadCart();
+		return cart.itemList.size();
 	}
 
 	

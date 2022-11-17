@@ -9,6 +9,7 @@
 	String key = (String) request.getAttribute("key");
 %>
 <head>
+	
     <meta charset="utf-8">
     <title>NTEShopping.lk</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -17,7 +18,7 @@
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
@@ -88,9 +89,9 @@
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
-                <a href="cart.jsp" class="btn border">
+                <a href="my-cart" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">0</span>
+                    <span class="badge" id="cartQty"></span>
                 </a>
             </div>
         </div>
@@ -209,8 +210,29 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Contact Javascript File -->
+    
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
+    <script >
+    
+    function updateCart(){
+    	
+    	$.get("http://localhost:8080/NTEShopping.lk/get-qty",function(data,status){
+    		$("#cartQty").text(data);
+    	})
+    }
+    
+    $(".addButton").click(function(){
+    	var num = this.id
+    	
+    	$.get("http://localhost:8080/NTEShopping.lk/create-new-item-in-cart?itemId="+num,function(data, status){    	    
+    		
+    		updateCart();
+    	  });    	
+    })
+    setInterval(updateCart,500);
+    
+    </script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
